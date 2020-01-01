@@ -4,7 +4,7 @@ var ctx = document.querySelector("canvas").getContext("2d");
 var osc = acx.createOscillator();
 osc.frequency.value = 440;
 osc.type = "square";
-osc.connect(ctx.destination);
+osc.connect(acx.destination);
 
 osc.start();
 setTimeout(function() {
