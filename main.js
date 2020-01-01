@@ -1,6 +1,6 @@
 var ctx = document.querySelector("canvas").getContext("2d");
 
-window.document.body.children[0]..onclick = function(e) {
+window.document.body.children[0].onclick = function(e) {
 	var acx = new AudioContext();var osc = acx.createOscillator();
 	osc.frequency.value = 440;
 	osc.type = "square";
