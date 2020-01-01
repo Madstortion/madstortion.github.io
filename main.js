@@ -1,8 +1,8 @@
 var acx = new AudioContext();
-var ctx =document.querySelector("canvas").getContext("2d");
+var ctx = document.querySelector("canvas").getContext("2d");
 
 var osc = acx.createOscillator();
-osc.frequncy.value = 440;
+osc.frequency.value = 440;
 osc.type = "square";
 osc.connect(ctx.destination);
 
