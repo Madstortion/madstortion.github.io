@@ -20,6 +20,15 @@ function addDist() {
 	};
 }
 
+function addChorus() {
+	var osc = acx.createOscillator();
+	osc.frequency.value = 3;
+	osc.type = "sine";
+	
+	var gain = ctx.createGain();
+	gain.value.setVlueAtTime(1, 0);
+}
+
 function addSource() {
 	var elem = document.querySelector("audio");
 	var selem = acx.createMediaElementSource(elem);
