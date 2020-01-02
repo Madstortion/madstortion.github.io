@@ -19,3 +19,11 @@ function addDist() {
 		return curve;
 	};
 }
+
+
+function addSource() {
+	var elem = document.querySelector("audio");
+	var selem = acx.createMediaElementSource(elem);
+	
+	Output.push(selem);
+}
