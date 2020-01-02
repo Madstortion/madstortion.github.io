@@ -1,16 +1,21 @@
-var ctx = document.querySelector("canvas").getContext("2d");
+var Output = [];
 
-window.document.body.children[0].onclick = function(e) {
-	var acx = new AudioContext();var osc = acx.createOscillator();
-	osc.frequency.value = 440;
-	osc.type = "square";
-	osc.connect(acx.destination);
+var acx = new AudioContext();
 
-	osc.start();
-	setTimeout(function() {
-		osc.stop();
-		osc = null;
-		ctx.fillStyle = "rgba(255, 127, 63)";
-		ctx.fillRect(ctx.canvas.width / 2, ctx.canvas.height / 2, ctx.canvas.width / 4, ctx.canvas.height / 4);
-	}, 500);
-};
+function addDist() {
+	var dist = acx.createWaveShaper();
+	dist.curve = function(a) {
+		var k = typeof a === "Number" ? a : 50;
+		var n_samples = 44100;
+		var curve = new Float32Array(n_samples);
+		var deg = Math.PI / 180;
+		var x;
+		
+		for (var i = 0; i < n_samples; ++i) {
+			x = i * 2 / n_samples - 1;
+			curve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Mat.abs(x));
+		}
+		
+		return curve;
+	};
+}
