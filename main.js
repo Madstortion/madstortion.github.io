@@ -20,10 +20,17 @@ function addDist() {
 	};
 }
 
-
 function addSource() {
 	var elem = document.querySelector("audio");
 	var selem = acx.createMediaElementSource(elem);
 	
 	Output.push(selem);
+}
+
+function attach() {
+	for (var i = 0; i < Output.length - 1; i++) {
+		Output[i].connect(Output[++i]);
+	}
+	
+	Output[Output.length].connect(acx.destination);
 }
