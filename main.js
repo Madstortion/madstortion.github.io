@@ -1,45 +1,24 @@
-var Output = [];
+var aud = new Audio();
 
-var acx = new AudioContext();
+var buffer = [];
 
-function addDist() {
-	var dist = acx.createWaveShaper();
-	dist.curve = function(a) {
-		var k = typeof a === "Number" ? a : 50;
-		var n_samples = 44100;
-		var curve = new Float32Array(n_samples);
-		var deg = Math.PI / 180;
-		var x;
-		
-		for (var i = 0; i < n_samples; ++i) {
-			x = i * 2 / n_samples - 1;
-			curve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Mat.abs(x));
-		}
-		
-		return curve;
-	};
+var sl = 16384;
+var sr = 44100;
+var wf = 440;
+var wv = 127;
+
+var period = sr / wf / 2;
+var pi = Math.PI;
+
+var n;
+
+function sin(x) {
+	return Math.sin(x);
 }
 
-function addChorus() {
-	var osc = acx.createOscillator();
-	osc.frequency.value = 3;
-	osc.type = "sine";
-	
-	var gain = ctx.createGain();
-	gain.value.setVlueAtTime(1, 0);
+for (var i = 0; i < sl; ++i) {
+	n = wv * sin(i * pi / period);
+	buffer[i] = n;
 }
 
-function addSource() {
-	var elem = document.querySelector("audio");
-	var selem = acx.createMediaElementSource(elem);
-	
-	Output.push(selem);
-}
-
-function attach() {
-	for (var i = 0; i < Output.length - 1; i++) {
-		Output[i].connect(Output[++i]);
-	}
-	
-	Output[Output.length].connect(acx.destination);
-}
+document.write(buffer);
