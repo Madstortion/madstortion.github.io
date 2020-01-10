@@ -27,4 +27,4 @@ var url = window.URL.createObjectURL(blob);
 aud.controls = true;
 aud.src = url;
 
-docuent.body.appendChild(aud);
+document.body.appendChild(aud);
