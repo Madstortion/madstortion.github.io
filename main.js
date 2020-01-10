@@ -21,4 +21,10 @@ for (var i = 0; i < sl; ++i) {
 	buffer[i] = n;
 }
 
-document.write(buffer);
+var blob = new Blob([ new Uint8Array(buffer).buffer ], { type: "audio/wav" });
+var url = window.URL.createObjectURL(blob);
+
+aud.controls = true;
+aud.src = url;
+
+docuent.body.appendChild(aud);
