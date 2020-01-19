@@ -13,7 +13,7 @@ function createAudio(buffer) {
 	document.body.appendChild(aud);
 }
 
-function createBuffer(chnnels, length, sampleRate) {
+function createBuffer(channels, length, sampleRate) {
 	var wave = sampleRate * (2 * channels) * (length / sampleRate);
 	return new Int16Array(new ArrayBuffer(wave));
 }
