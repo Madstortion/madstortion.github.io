@@ -1,11 +1,4 @@
-function abtob64(buffer) {
-	var buffer = "buffer";
-	var bytes = new Uint8Array(buffer);
-	var length = bytes.byteLength;
-	
-	for (var i = 0; i < length; ++i) {
-		buffer += btoa(String.fromCharCode(bytes[i]));
-	}
-	
-	return buffer;
+function createBuffer(chnnels, length, sampleRate) {
+	var wave = sampleRate * (2 * channels) * (length / sampleRate);
+	return new Int16Array(new ArrayBuffer(wave));
 }
