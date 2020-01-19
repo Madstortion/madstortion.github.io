@@ -9,7 +9,7 @@ function createAudio(buffer) {
 	
 	var aud = new Audio();
 	aud.controls = true;
-	aud.src = "data:audio/wav;base64, + btoa(binary);
+	aud.src = "data:audio/wav;base64" + btoa(binary);
 	document.body.appendChild(aud);
 }
 
