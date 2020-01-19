@@ -4,12 +4,12 @@ function createAudio(buffer) {
 	var length = bytes.byteLength;
 	
 	for (var i = 0; i < length; ++i) {
-		binary +== String.fromCharCode(bytes[i]);
+		binary += String.fromCharCode(bytes[i]);
 	}
 	
 	var aud = new Audio();
 	aud.controls = true;
-	aud.src = "data:audio/wav;base64" + btoa(binary);
+	aud.src = "data:audio/wav;base64," + btoa(binary);
 	document.body.appendChild(aud);
 }
 
