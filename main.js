@@ -1,4 +1,4 @@
-function render(buffer) {
+function createAudio(buffer) {
 	var binary = "";
 	var bytes = new Int16Array(buffer);
 	var length = bytes.byteLength;
