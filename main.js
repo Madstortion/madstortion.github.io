@@ -44,6 +44,7 @@ function play() {
 		synthesise(buffer, 0, 1, 440, 1, sine);
 		createAudio(buffer).start();
 	};
+	document.body.appendChild(button);
 }
 
 function sin(x) {
@@ -65,3 +66,5 @@ function synthesise(buffer, start, length, freq, volume, funct) {
 	
 	return buffer;
 }
+
+play();
